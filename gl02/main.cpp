@@ -9,38 +9,29 @@
 
 #include "LCommon.h"
 #include "drawitem.h"
+#include "shader.h"
 
-void init(){
-    srand(clock());
-   // glClearColor(0.0f, 0.0f, 1.0f, 0.0f);
-    glColor3f(1.0f, 0.0f, 0.0f);
-   // gluOrtho2D(-10.0f, 10.0f, -10.0f, 10.0f);
-    glViewport(0, 0, 640, 480);
-    glEnable(GL_NORMALIZE);
-}
 
-bool t = true;
 void display(){
-    while(t)
-    {
-        glMatrixMode(GL_PROJECTION);
-        glLoadIdentity();
-        glOrtho(-2.0*64.0/48.0, 2.0*64.0/48.0, -2.0, 2.0, 0.1, 100);
-        
-        glMatrixMode(GL_MODELVIEW);
-        glLoadIdentity();
-        gluLookAt(2.0, 2.0, 2.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
-        
-        glClear(GL_COLOR_BUFFER_BIT);
-        
-        LMesh mesh;
-        mesh.read("/Users/lufei1/Documents/project/gl02/mesh.xml");
-        mesh.draw();
-        
-        glFlush();
-        t = false;
-    }
-  
+    glClearColor(0, 0, 0, 0);
+    glClear(GL_COLOR_BUFFER_BIT);
+    
+    glUseProgram(program);
+    GLfloat p[2] = {0, 0};
+    GLfloat color[4] = {1, 0, 0, 0};
+    
+//    GLuint vao_id;
+//    glGenVertexArraysAPPLE(1, &vao_id);
+//    glBindVertexArrayAPPLE(vao_id);
+    glEnableVertexAttribArray(0);/*position*/
+    glEnableVertexAttribArray(1);/*color*/
+
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, p);
+    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, color);
+    
+    glDrawArrays(GL_POINTS, 0, 1);
+    
+    glFlush();
 }
 
 void mouse(int button, int state, int x, int y){
@@ -73,9 +64,10 @@ int main(int argc, const char * argv[]) {
     glutInitWindowPosition (1000, 100);
     glutCreateWindow ("graphics with opengl");
     glutDisplayFunc(display);
-    //glutMouseFunc(mouse);
     glutKeyboardFunc(keyboard);
-    init();
+    
+    createShaderProgram();
     glutMainLoop();
+    
     return 0;
 }

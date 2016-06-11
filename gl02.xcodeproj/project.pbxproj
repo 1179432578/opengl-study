@@ -25,6 +25,7 @@
 		29A65CDE1B789B3100B8CD0D /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29A65CDC1B789B3100B8CD0D /* GLUT.framework */; };
 		29A65CDF1B789B3100B8CD0D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29A65CDD1B789B3100B8CD0D /* OpenGL.framework */; };
 		29A65CE21B78A0DD00B8CD0D /* LDeviceContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29A65CE01B78A0DD00B8CD0D /* LDeviceContext.cpp */; };
+		F6A0C6621D0C10BA00255599 /* shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6A0C6601D0C10BA00255599 /* shader.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -75,6 +76,8 @@
 		29A65CE01B78A0DD00B8CD0D /* LDeviceContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LDeviceContext.cpp; sourceTree = "<group>"; };
 		29A65CE11B78A0DD00B8CD0D /* LDeviceContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDeviceContext.h; sourceTree = "<group>"; };
 		29A65CE31B78A15D00B8CD0D /* LCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCommon.h; sourceTree = "<group>"; };
+		F6A0C6601D0C10BA00255599 /* shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = shader.cpp; path = shader/shader.cpp; sourceTree = "<group>"; };
+		F6A0C6611D0C10BA00255599 /* shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shader.h; path = shader/shader.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,12 +152,11 @@
 		298D57661B7448DB00932F06 = {
 			isa = PBXGroup;
 			children = (
-				29936BC01B8194BD005A4FD5 /* Resources */,
+				F6A0C65E1D0C0FB900255599 /* framework */,
 				29936BB51B819460005A4FD5 /* tinyXML */,
-				29A65CDC1B789B3100B8CD0D /* GLUT.framework */,
-				29A65CDD1B789B3100B8CD0D /* OpenGL.framework */,
 				298D57711B7448DB00932F06 /* gl02 */,
 				298D57701B7448DB00932F06 /* Products */,
+				29936BC01B8194BD005A4FD5 /* Resources */,
 			);
 			sourceTree = "<group>";
 		};
@@ -169,6 +171,7 @@
 		298D57711B7448DB00932F06 /* gl02 */ = {
 			isa = PBXGroup;
 			children = (
+				F6A0C65F1D0C109000255599 /* shader */,
 				296FAAE21B82CDF200B7D0C2 /* LMesh */,
 				29936BC21B81969D005A4FD5 /* LScene */,
 				297FBFED1B7DD92E001D83C9 /* OpenglTool */,
@@ -225,6 +228,24 @@
 				2996CDC31B7B1DF3007EB2D0 /* cyrus-beck.h */,
 			);
 			name = Clip;
+			sourceTree = "<group>";
+		};
+		F6A0C65E1D0C0FB900255599 /* framework */ = {
+			isa = PBXGroup;
+			children = (
+				29A65CDC1B789B3100B8CD0D /* GLUT.framework */,
+				29A65CDD1B789B3100B8CD0D /* OpenGL.framework */,
+			);
+			name = framework;
+			sourceTree = "<group>";
+		};
+		F6A0C65F1D0C109000255599 /* shader */ = {
+			isa = PBXGroup;
+			children = (
+				F6A0C6601D0C10BA00255599 /* shader.cpp */,
+				F6A0C6611D0C10BA00255599 /* shader.h */,
+			);
+			name = shader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,6 +310,7 @@
 				296FAAE51B82CE0500B7D0C2 /* LMesh.cpp in Sources */,
 				296A1C8D1B7C41B200DBDD1D /* drawitem.cpp in Sources */,
 				29936BC51B8196D5005A4FD5 /* LScene.cpp in Sources */,
+				F6A0C6621D0C10BA00255599 /* shader.cpp in Sources */,
 				298D57731B7448DB00932F06 /* main.cpp in Sources */,
 				2996CDC41B7B1DF3007EB2D0 /* cyrus-beck.cpp in Sources */,
 				2996CDB71B7AE616007EB2D0 /* LPlane.cpp in Sources */,
