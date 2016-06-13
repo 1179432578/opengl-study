@@ -25,6 +25,7 @@
 		29A65CDE1B789B3100B8CD0D /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29A65CDC1B789B3100B8CD0D /* GLUT.framework */; };
 		29A65CDF1B789B3100B8CD0D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29A65CDD1B789B3100B8CD0D /* OpenGL.framework */; };
 		29A65CE21B78A0DD00B8CD0D /* LDeviceContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29A65CE01B78A0DD00B8CD0D /* LDeviceContext.cpp */; };
+		29EA9A5B1D0E592F001FC796 /* DrawPrimitives.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29EA9A591D0E592F001FC796 /* DrawPrimitives.cpp */; };
 		F6A0C6621D0C10BA00255599 /* shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6A0C6601D0C10BA00255599 /* shader.cpp */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,8 @@
 		29A65CE01B78A0DD00B8CD0D /* LDeviceContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LDeviceContext.cpp; sourceTree = "<group>"; };
 		29A65CE11B78A0DD00B8CD0D /* LDeviceContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDeviceContext.h; sourceTree = "<group>"; };
 		29A65CE31B78A15D00B8CD0D /* LCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCommon.h; sourceTree = "<group>"; };
+		29EA9A591D0E592F001FC796 /* DrawPrimitives.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DrawPrimitives.cpp; path = primitive/DrawPrimitives.cpp; sourceTree = "<group>"; };
+		29EA9A5A1D0E592F001FC796 /* DrawPrimitives.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawPrimitives.h; path = primitive/DrawPrimitives.h; sourceTree = "<group>"; };
 		F6A0C6601D0C10BA00255599 /* shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = shader.cpp; path = shader/shader.cpp; sourceTree = "<group>"; };
 		F6A0C6611D0C10BA00255599 /* shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shader.h; path = shader/shader.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,21 +174,11 @@
 		298D57711B7448DB00932F06 /* gl02 */ = {
 			isa = PBXGroup;
 			children = (
+				29EA9A571D0E562F001FC796 /* primitive */,
+				29EA9A561D0E5323001FC796 /* texture */,
+				29EA9A551D0E50E1001FC796 /* other */,
 				F6A0C65F1D0C109000255599 /* shader */,
-				296FAAE21B82CDF200B7D0C2 /* LMesh */,
-				29936BC21B81969D005A4FD5 /* LScene */,
-				297FBFED1B7DD92E001D83C9 /* OpenglTool */,
-				296A1C931B7C77E700DBDD1D /* LDeviceContent */,
-				296A1C921B7C779100DBDD1D /* LPoint */,
-				296A1C8A1B7C40BA00DBDD1D /* Math */,
-				296A1C861B7C367800DBDD1D /* Matrix */,
-				2996CDC11B7B1DCD007EB2D0 /* Clip */,
 				298D57721B7448DB00932F06 /* main.cpp */,
-				298D57791B7492D500932F06 /* world window and screen view.cpp */,
-				298D577A1B7492D500932F06 /* world window and screen view.h */,
-				29A65CE31B78A15D00B8CD0D /* LCommon.h */,
-				296A1C8B1B7C41B200DBDD1D /* drawitem.cpp */,
-				296A1C8C1B7C41B200DBDD1D /* drawitem.h */,
 			);
 			path = gl02;
 			sourceTree = "<group>";
@@ -228,6 +221,42 @@
 				2996CDC31B7B1DF3007EB2D0 /* cyrus-beck.h */,
 			);
 			name = Clip;
+			sourceTree = "<group>";
+		};
+		29EA9A551D0E50E1001FC796 /* other */ = {
+			isa = PBXGroup;
+			children = (
+				298D57791B7492D500932F06 /* world window and screen view.cpp */,
+				298D577A1B7492D500932F06 /* world window and screen view.h */,
+				29A65CE31B78A15D00B8CD0D /* LCommon.h */,
+				296A1C8B1B7C41B200DBDD1D /* drawitem.cpp */,
+				296A1C8C1B7C41B200DBDD1D /* drawitem.h */,
+				296FAAE21B82CDF200B7D0C2 /* LMesh */,
+				29936BC21B81969D005A4FD5 /* LScene */,
+				297FBFED1B7DD92E001D83C9 /* OpenglTool */,
+				296A1C931B7C77E700DBDD1D /* LDeviceContent */,
+				296A1C921B7C779100DBDD1D /* LPoint */,
+				296A1C8A1B7C40BA00DBDD1D /* Math */,
+				296A1C861B7C367800DBDD1D /* Matrix */,
+				2996CDC11B7B1DCD007EB2D0 /* Clip */,
+			);
+			name = other;
+			sourceTree = "<group>";
+		};
+		29EA9A561D0E5323001FC796 /* texture */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = texture;
+			sourceTree = "<group>";
+		};
+		29EA9A571D0E562F001FC796 /* primitive */ = {
+			isa = PBXGroup;
+			children = (
+				29EA9A591D0E592F001FC796 /* DrawPrimitives.cpp */,
+				29EA9A5A1D0E592F001FC796 /* DrawPrimitives.h */,
+			);
+			name = primitive;
 			sourceTree = "<group>";
 		};
 		F6A0C65E1D0C0FB900255599 /* framework */ = {
@@ -309,6 +338,7 @@
 				29A65CE21B78A0DD00B8CD0D /* LDeviceContext.cpp in Sources */,
 				296FAAE51B82CE0500B7D0C2 /* LMesh.cpp in Sources */,
 				296A1C8D1B7C41B200DBDD1D /* drawitem.cpp in Sources */,
+				29EA9A5B1D0E592F001FC796 /* DrawPrimitives.cpp in Sources */,
 				29936BC51B8196D5005A4FD5 /* LScene.cpp in Sources */,
 				F6A0C6621D0C10BA00255599 /* shader.cpp in Sources */,
 				298D57731B7448DB00932F06 /* main.cpp in Sources */,

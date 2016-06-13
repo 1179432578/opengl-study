@@ -8,29 +8,20 @@
 
 
 #include "LCommon.h"
-#include "drawitem.h"
 #include "shader.h"
-
+#include "DrawPrimitives.h"
 
 void display(){
     glClearColor(0, 0, 0, 0);
     glClear(GL_COLOR_BUFFER_BIT);
     
-    glUseProgram(program);
-    GLfloat p[2] = {0, 0};
-    GLfloat color[4] = {1, 0, 0, 0};
-    
-//    GLuint vao_id;
-//    glGenVertexArraysAPPLE(1, &vao_id);
-//    glBindVertexArrayAPPLE(vao_id);
-    glEnableVertexAttribArray(0);/*position*/
-    glEnableVertexAttribArray(1);/*color*/
-
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, p);
-    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, color);
-    
-    glDrawArrays(GL_POINTS, 0, 1);
-    
+//    setPointSize(10);
+//    drawPoint(0.0f, 0.0f);
+//    drawLine(0.0f, 0.0f, 0.5f, 0.5f);
+//    drawRectangle(Point2f(-0.5, -0.5), Point2f(0.5, 0.5));
+    glMatrixMode(GL_MODELVIEW);
+    glRotatef(1, 29, 0, 0);
+    drawFourcone();
     glFlush();
 }
 
@@ -65,7 +56,7 @@ int main(int argc, const char * argv[]) {
     glutCreateWindow ("graphics with opengl");
     glutDisplayFunc(display);
     glutKeyboardFunc(keyboard);
-    
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     createShaderProgram();
     glutMainLoop();
     
