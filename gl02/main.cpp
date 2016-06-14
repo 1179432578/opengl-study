@@ -56,7 +56,8 @@ int main(int argc, const char * argv[]) {
     glutCreateWindow ("graphics with opengl");
     glutDisplayFunc(display);
     glutKeyboardFunc(keyboard);
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+//    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    glEnable(GL_TEXTURE_2D);//开启纹理
     createShaderProgram();
     glutMainLoop();
     

@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "78B398E83C3E2A38BB2D62B2DCDD99C04AF27714",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "78B398E83C3E2A38BB2D62B2DCDD99C04AF27714" : 0,
+    "4228A7181F8CA12506033C8690C4E88AF2384F49" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "84EF4133-0C20-47E0-B60F-7DF77C144039",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "78B398E83C3E2A38BB2D62B2DCDD99C04AF27714" : "opengl-study\/",
+    "4228A7181F8CA12506033C8690C4E88AF2384F49" : "CG-SDK-master\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "gl02",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "gl02.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/1179432578\/CG-SDK.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4228A7181F8CA12506033C8690C4E88AF2384F49"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/1179432578\/opengl-study.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "78B398E83C3E2A38BB2D62B2DCDD99C04AF27714"
+    }
+  ]
+}

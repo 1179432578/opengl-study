@@ -154,8 +154,6 @@ GLuint createShaderProgram(const char *vsource, const char *fsource){
     }
     checkGLError();
     
-    glBindAttribLocation(program, 0, "a_position");
-    
     /*link*/
     glLinkProgram(program);
     glDeleteShader(vshader);

@@ -25,19 +25,22 @@
 		29A65CDE1B789B3100B8CD0D /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29A65CDC1B789B3100B8CD0D /* GLUT.framework */; };
 		29A65CDF1B789B3100B8CD0D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29A65CDD1B789B3100B8CD0D /* OpenGL.framework */; };
 		29A65CE21B78A0DD00B8CD0D /* LDeviceContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29A65CE01B78A0DD00B8CD0D /* LDeviceContext.cpp */; };
-		29EA9A5B1D0E592F001FC796 /* DrawPrimitives.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29EA9A591D0E592F001FC796 /* DrawPrimitives.cpp */; };
+		29EA9A5B1D0E592F001FC796 /* DrawPrimitives.mm in Sources */ = {isa = PBXBuildFile; fileRef = 29EA9A591D0E592F001FC796 /* DrawPrimitives.mm */; };
 		F6A0C6621D0C10BA00255599 /* shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6A0C6601D0C10BA00255599 /* shader.cpp */; };
+		F6C19FDE1D1068BE00380606 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C19FDD1D1068BE00380606 /* Foundation.framework */; };
+		F6C19FE01D1068CA00380606 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C19FDF1D1068CA00380606 /* Cocoa.framework */; };
+		F6C19FE21D1068D300380606 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C19FE11D1068D300380606 /* AppKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		298D576D1B7448DB00932F06 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 0;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -50,7 +53,6 @@
 		296A1C901B7C6E5C00DBDD1D /* LMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMath.h; sourceTree = "<group>"; };
 		296FAAE31B82CE0500B7D0C2 /* LMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LMesh.cpp; sourceTree = "<group>"; };
 		296FAAE41B82CE0500B7D0C2 /* LMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMesh.h; sourceTree = "<group>"; };
-		296FAAE61B82D37400B7D0C2 /* mesh.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = mesh.xml; sourceTree = "<group>"; };
 		2972F48A1B79F149005FA583 /* LPoint2f.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LPoint2f.cpp; sourceTree = "<group>"; };
 		2972F48B1B79F149005FA583 /* LPoint2f.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPoint2f.h; sourceTree = "<group>"; };
 		297FBFEE1B7DD954001D83C9 /* LTool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LTool.cpp; sourceTree = "<group>"; };
@@ -65,7 +67,6 @@
 		29936BB91B819499005A4FD5 /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
 		29936BBA1B819499005A4FD5 /* tinyxmlerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
 		29936BBB1B819499005A4FD5 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
-		29936BC11B819505005A4FD5 /* scene.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = scene.xml; sourceTree = "<group>"; };
 		29936BC31B8196D5005A4FD5 /* LScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LScene.cpp; sourceTree = "<group>"; };
 		29936BC41B8196D5005A4FD5 /* LScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LScene.h; sourceTree = "<group>"; };
 		2996CDB51B7AE616007EB2D0 /* LPlane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LPlane.cpp; sourceTree = "<group>"; };
@@ -77,10 +78,16 @@
 		29A65CE01B78A0DD00B8CD0D /* LDeviceContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LDeviceContext.cpp; sourceTree = "<group>"; };
 		29A65CE11B78A0DD00B8CD0D /* LDeviceContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDeviceContext.h; sourceTree = "<group>"; };
 		29A65CE31B78A15D00B8CD0D /* LCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCommon.h; sourceTree = "<group>"; };
-		29EA9A591D0E592F001FC796 /* DrawPrimitives.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DrawPrimitives.cpp; path = primitive/DrawPrimitives.cpp; sourceTree = "<group>"; };
+		29EA9A591D0E592F001FC796 /* DrawPrimitives.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DrawPrimitives.mm; path = primitive/DrawPrimitives.mm; sourceTree = "<group>"; };
 		29EA9A5A1D0E592F001FC796 /* DrawPrimitives.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawPrimitives.h; path = primitive/DrawPrimitives.h; sourceTree = "<group>"; };
 		F6A0C6601D0C10BA00255599 /* shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = shader.cpp; path = shader/shader.cpp; sourceTree = "<group>"; };
 		F6A0C6611D0C10BA00255599 /* shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shader.h; path = shader/shader.h; sourceTree = "<group>"; };
+		F6C19FDB1D105A7300380606 /* Texture2D.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Texture2D.h; sourceTree = "<group>"; };
+		F6C19FDC1D105A7300380606 /* Texture2D.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Texture2D.mm; sourceTree = "<group>"; };
+		F6C19FDD1D1068BE00380606 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F6C19FDF1D1068CA00380606 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		F6C19FE11D1068D300380606 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		F6C19FE61D106A9C00380606 /* resource */ = {isa = PBXFileReference; lastKnownFileType = folder; path = resource; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +95,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6C19FE21D1068D300380606 /* AppKit.framework in Frameworks */,
+				F6C19FE01D1068CA00380606 /* Cocoa.framework in Frameworks */,
+				F6C19FDE1D1068BE00380606 /* Foundation.framework in Frameworks */,
 				29A65CDE1B789B3100B8CD0D /* GLUT.framework in Frameworks */,
 				29A65CDF1B789B3100B8CD0D /* OpenGL.framework in Frameworks */,
 			);
@@ -159,7 +169,7 @@
 				29936BB51B819460005A4FD5 /* tinyXML */,
 				298D57711B7448DB00932F06 /* gl02 */,
 				298D57701B7448DB00932F06 /* Products */,
-				29936BC01B8194BD005A4FD5 /* Resources */,
+				F6C19FE61D106A9C00380606 /* resource */,
 			);
 			sourceTree = "<group>";
 		};
@@ -175,7 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				29EA9A571D0E562F001FC796 /* primitive */,
-				29EA9A561D0E5323001FC796 /* texture */,
+				F6C19FDA1D105A7300380606 /* texture */,
 				29EA9A551D0E50E1001FC796 /* other */,
 				F6A0C65F1D0C109000255599 /* shader */,
 				298D57721B7448DB00932F06 /* main.cpp */,
@@ -194,15 +204,6 @@
 				29936BBB1B819499005A4FD5 /* tinyxmlparser.cpp */,
 			);
 			name = tinyXML;
-			sourceTree = "<group>";
-		};
-		29936BC01B8194BD005A4FD5 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				29936BC11B819505005A4FD5 /* scene.xml */,
-				296FAAE61B82D37400B7D0C2 /* mesh.xml */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		29936BC21B81969D005A4FD5 /* LScene */ = {
@@ -243,17 +244,10 @@
 			name = other;
 			sourceTree = "<group>";
 		};
-		29EA9A561D0E5323001FC796 /* texture */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = texture;
-			sourceTree = "<group>";
-		};
 		29EA9A571D0E562F001FC796 /* primitive */ = {
 			isa = PBXGroup;
 			children = (
-				29EA9A591D0E592F001FC796 /* DrawPrimitives.cpp */,
+				29EA9A591D0E592F001FC796 /* DrawPrimitives.mm */,
 				29EA9A5A1D0E592F001FC796 /* DrawPrimitives.h */,
 			);
 			name = primitive;
@@ -262,6 +256,9 @@
 		F6A0C65E1D0C0FB900255599 /* framework */ = {
 			isa = PBXGroup;
 			children = (
+				F6C19FE11D1068D300380606 /* AppKit.framework */,
+				F6C19FDF1D1068CA00380606 /* Cocoa.framework */,
+				F6C19FDD1D1068BE00380606 /* Foundation.framework */,
 				29A65CDC1B789B3100B8CD0D /* GLUT.framework */,
 				29A65CDD1B789B3100B8CD0D /* OpenGL.framework */,
 			);
@@ -275,6 +272,15 @@
 				F6A0C6611D0C10BA00255599 /* shader.h */,
 			);
 			name = shader;
+			sourceTree = "<group>";
+		};
+		F6C19FDA1D105A7300380606 /* texture */ = {
+			isa = PBXGroup;
+			children = (
+				F6C19FDB1D105A7300380606 /* Texture2D.h */,
+				F6C19FDC1D105A7300380606 /* Texture2D.mm */,
+			);
+			path = texture;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,7 +344,7 @@
 				29A65CE21B78A0DD00B8CD0D /* LDeviceContext.cpp in Sources */,
 				296FAAE51B82CE0500B7D0C2 /* LMesh.cpp in Sources */,
 				296A1C8D1B7C41B200DBDD1D /* drawitem.cpp in Sources */,
-				29EA9A5B1D0E592F001FC796 /* DrawPrimitives.cpp in Sources */,
+				29EA9A5B1D0E592F001FC796 /* DrawPrimitives.mm in Sources */,
 				29936BC51B8196D5005A4FD5 /* LScene.cpp in Sources */,
 				F6A0C6621D0C10BA00255599 /* shader.cpp in Sources */,
 				298D57731B7448DB00932F06 /* main.cpp in Sources */,
