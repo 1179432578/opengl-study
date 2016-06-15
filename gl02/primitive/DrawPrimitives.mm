@@ -9,7 +9,11 @@
 #include "DrawPrimitives.h"
 #include "shader.h"
 #import <Cocoa/cocoa.h>
+#include "Texture2D.h"
+#include "matrix_transform.h"
+#include "Matrix.h"
 
+//平面着色器
 #define V_POSITON_COLOR_SIZE \
 "													\n\
 attribute vec4 a_position;							\n\
@@ -43,6 +47,27 @@ void main()								\n\
 {										\n\
 gl_FragColor = v_fragmentColor;         \n\
 }										\n\
+"
+
+//纹理变灰着色器
+#define V_GARY \
+"\
+attribute vec4 a_position;\n\
+attribute vec2 a_texCoord;\n\
+varying vec2 v_texCoord;\n\
+void main(){\n\
+    gl_Position = a_position;\n\
+    v_texCoord = a_texCoord;\n\
+}\n\
+"
+
+#define F_GARY \
+"\
+varying vec2 v_texCoord;\
+uniform sampler2D u_tex;\
+void main(){\
+    gl_FragColor = texture2D(u_tex, v_texCoord) * vec4(0.3, 0.3, 0.3, 1.0);\
+}\
 "
 
 //纹理顶点着色器
@@ -87,8 +112,8 @@ static GLint s_mvcMatrixLocation;
 static GLfloat s_fPointSize = 10.0f;
 static GLfloat s_tColor[] = {1.0f,1.0f,1.0f,1.0f};
 static GLfloat s_matrix[] = {1, 0, 0, 0,
-                             0, 0.6, 0.5, 0,
-                             0, -0.5, 0.6, 0,
+                             0, 1, 0, 0,
+                             0, 0, 1, 0,
                              0, 0, 0, 1};
 //static GLfloat s_matrix[] = {1, 0, 0, 0,
 //                             0, 1, 0, 0,
@@ -119,6 +144,21 @@ static void initDraw2()
         
         s_nColorLocation = glGetUniformLocation(s_program, "u_color");
         s_mvcMatrixLocation = glGetUniformLocation(s_program, "MVPMatrix");
+        
+        glBindAttribLocation(s_program, 0, "a_position");
+        glBindAttribLocation(s_program, 1, "a_texCoord");
+        
+        s_bInitialized = true;
+    }
+}
+
+//实现一个读取外部着色器代码，绑定属性位置，获得uniform变量位置的创建着色器函数
+
+static void initDraw3(){
+    if(!s_bInitialized ) {
+        s_program = createShaderProgram(V_GARY, F_GARY);
+        
+//        s_nColorLocation = glGetUniformLocation(s_program, "u_tex");
         
         glBindAttribLocation(s_program, 0, "a_position");
         glBindAttribLocation(s_program, 1, "a_texCoord");
@@ -303,4 +343,157 @@ void drawFourcone(){
     };
     
     drawTriangles(points, texCoord, sizeof(points)/sizeof(GLfloat)/3, tex);
+}
+
+//画四边形
+void drawQuads(GLfloat p[], GLfloat texCoord[], int numberOfPoints, Texture2D *tex){
+    initDraw2();
+    
+    glUseProgram(s_program);
+    glUniform4fv(s_nColorLocation, 1, s_tColor);/*设置顶点颜色*/
+    glUniformMatrix4fv(s_mvcMatrixLocation, 1, GL_FALSE, s_matrix);/*设置顶点变换矩阵*/
+    
+    //激活绑定纹理
+    tex->useTexture();
+    
+    /*传数据给opengl服务器*/
+    glEnableVertexAttribArray(0);/*position*/
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, p);
+    
+    glEnableVertexAttribArray(1);//texture coordinate
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, texCoord);
+    
+    glDrawArrays(GL_QUADS, 0, numberOfPoints);
+    
+}
+
+void drawCube(){
+    //顶点坐标
+    GLfloat vertexPos[] = {
+        //前面
+        -0.5,0.5,0.5,
+        0.5,0.5,0.5,
+        0.5,-0.5,0.5,
+        -0.5,-0.5,0.5,
+        //后面
+        -0.5,0.5,-0.5,
+        0.5,0.5,-0.5,
+        0.5,-0.5,-0.5,
+        -0.5,-0.5,-0.5,
+        //左面
+        -0.5,0.5,0.5,
+        -0.5,0.5,-0.5,
+        -0.5,-0.5,-0.5,
+        -0.5,-0.5,0.5,
+        //右面
+        0.5,0.5,0.5,
+        0.5,0.5,-0.5,
+        0.5,-0.5,-0.5,
+        0.5,-0.5,0.5,
+        //上面
+        -0.5,0.5,-0.5,
+        0.5,0.5,-0.5,
+        0.5,0.5,0.5,
+        -0.5,0.5,0.5,
+        //下面
+        -0.5,-0.5,-0.5,
+        0.5,-0.5,-0.5,
+        0.5,-0.5,0.5,
+        -0.5,-0.5,0.5
+    };
+    
+    Texture2D *tex = Texture2D::create("/Users/lewis/Desktop/opengl-study/resource/Icon-72@2x.png");
+    
+    //纹理坐标
+    GLfloat texCoord[] = {
+        //前面
+        0,1,
+        1,1,
+        1,0,
+        0,0,
+        //后面
+        0,1,
+        1,1,
+        1,0,
+        0,0,
+        //左面
+        0,1,
+        1,1,
+        1,0,
+        0,0,
+        //右面
+        0,1,
+        1,1,
+        1,0,
+        0,0,
+        //上面
+        0,1,
+        1,1,
+        1,0,
+        0,0,
+        //下面
+        0,1,
+        1,1,
+        1,0,
+        0,0,
+    };
+    
+    //对模型进行变换
+    changeMatrix();
+    
+    drawQuads(vertexPos, texCoord, sizeof(vertexPos)/sizeof(GLfloat)/3, tex);
+}
+
+void changeMatrix(){
+    //模型变换
+    Matrix44 m1 = rotate(30, 1, 1, -1);
+    //观察变换
+    Matrix44 m2 = mglLookAt(0, 0, 3, 0, 0, 0, 0, 1, 0);
+    //设置投影空间
+    Matrix44 m3 = mgluPerspective(M_PI_4, 640.0f/480.f, 1, 1000);
+    
+    //求矩阵乘积
+    Matrix44 m4 = multiply(&m1, &m2);
+    m4 = multiply(&m4, &m3);
+    print(&m3);
+    //设置着色器关联变量值
+    memcpy(s_matrix, &m4, 64);
+}
+
+//画四边形
+void drawQuads2(GLfloat p[], GLfloat texCoord[], int numberOfPoints, Texture2D *tex){
+    initDraw3();
+    
+    glUseProgram(s_program);
+    
+    //激活绑定纹理
+    tex->useTexture();
+    
+    /*传数据给opengl服务器*/
+    glEnableVertexAttribArray(0);/*position*/
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, p);
+    
+    glEnableVertexAttribArray(1);//texture coordinate
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, texCoord);
+    
+    glDrawArrays(GL_QUADS, 0, numberOfPoints);
+    
+}
+
+void testShader(){
+    GLfloat vPos[] = {
+            0, 0,
+            1, 0,
+            1, 1,
+            0, 1};
+    
+    GLfloat texPos[] = {
+        0, 0,
+        1, 0,
+        1, 1,
+        0, 1};
+    
+    Texture2D *tex = Texture2D::create("/Users/lewis/Desktop/opengl-study/resource/Icon-72@2x.png");
+    
+    drawQuads2(vPos, texPos, 4, tex);
 }

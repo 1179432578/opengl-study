@@ -37,4 +37,13 @@ void drawTriangles(Point2f p[], int numberOfPoints);
 /*画四角锥*/
 void drawFourcone();
 
+//画正方体
+void drawCube();
+
+//改变变换矩阵
+void changeMatrix();
+
+//测试着色程序
+void testShader();
+
 #endif /* DrawPrimitives_hpp */

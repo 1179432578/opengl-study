@@ -13,15 +13,15 @@
 
 void display(){
     glClearColor(0, 0, 0, 0);
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
 //    setPointSize(10);
 //    drawPoint(0.0f, 0.0f);
 //    drawLine(0.0f, 0.0f, 0.5f, 0.5f);
 //    drawRectangle(Point2f(-0.5, -0.5), Point2f(0.5, 0.5));
-    glMatrixMode(GL_MODELVIEW);
-    glRotatef(1, 29, 0, 0);
-    drawFourcone();
+
+//    drawCube();
+    testShader();
     glFlush();
 }
 
@@ -50,12 +50,13 @@ void keyboard(unsigned char keyValue, int x, int y){
 int main(int argc, const char * argv[]) {
     // insert code here...
     glutInit(&argc, (char **)argv);
-    glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
+    glutInitDisplayMode (GLUT_SINGLE | GLUT_RGBA | GLUT_DEPTH);
     glutInitWindowSize (640, 480);
     glutInitWindowPosition (1000, 100);
     glutCreateWindow ("graphics with opengl");
     glutDisplayFunc(display);
     glutKeyboardFunc(keyboard);
+    glEnable(GL_DEPTH_TEST);
 //    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glEnable(GL_TEXTURE_2D);//开启纹理
     createShaderProgram();

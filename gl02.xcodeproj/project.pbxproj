@@ -26,6 +26,12 @@
 		29A65CDF1B789B3100B8CD0D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29A65CDD1B789B3100B8CD0D /* OpenGL.framework */; };
 		29A65CE21B78A0DD00B8CD0D /* LDeviceContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29A65CE01B78A0DD00B8CD0D /* LDeviceContext.cpp */; };
 		29EA9A5B1D0E592F001FC796 /* DrawPrimitives.mm in Sources */ = {isa = PBXBuildFile; fileRef = 29EA9A591D0E592F001FC796 /* DrawPrimitives.mm */; };
+		F658DC6C1D11925D00B6723D /* Texture2D.mm in Sources */ = {isa = PBXBuildFile; fileRef = F6C19FDC1D105A7300380606 /* Texture2D.mm */; };
+		F658DC781D11942600B6723D /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F658DC6E1D1192C600B6723D /* Matrix.cpp */; };
+		F658DC7A1D11942600B6723D /* matrix_transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F658DC701D1192C600B6723D /* matrix_transform.cpp */; };
+		F658DC7C1D11942600B6723D /* MatrixStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F658DC721D1192C600B6723D /* MatrixStack.cpp */; };
+		F658DC7E1D11942600B6723D /* mglMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F658DC741D1192C600B6723D /* mglMatrix.cpp */; };
+		F658DC801D11942600B6723D /* Vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F658DC761D1192C600B6723D /* Vector3.cpp */; };
 		F6A0C6621D0C10BA00255599 /* shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6A0C6601D0C10BA00255599 /* shader.cpp */; };
 		F6C19FDE1D1068BE00380606 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C19FDD1D1068BE00380606 /* Foundation.framework */; };
 		F6C19FE01D1068CA00380606 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C19FDF1D1068CA00380606 /* Cocoa.framework */; };
@@ -80,6 +86,16 @@
 		29A65CE31B78A15D00B8CD0D /* LCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCommon.h; sourceTree = "<group>"; };
 		29EA9A591D0E592F001FC796 /* DrawPrimitives.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DrawPrimitives.mm; path = primitive/DrawPrimitives.mm; sourceTree = "<group>"; };
 		29EA9A5A1D0E592F001FC796 /* DrawPrimitives.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawPrimitives.h; path = primitive/DrawPrimitives.h; sourceTree = "<group>"; };
+		F658DC6E1D1192C600B6723D /* Matrix.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Matrix.cpp; sourceTree = "<group>"; };
+		F658DC6F1D1192C600B6723D /* Matrix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
+		F658DC701D1192C600B6723D /* matrix_transform.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = matrix_transform.cpp; sourceTree = "<group>"; };
+		F658DC711D1192C600B6723D /* matrix_transform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = matrix_transform.h; sourceTree = "<group>"; };
+		F658DC721D1192C600B6723D /* MatrixStack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MatrixStack.cpp; sourceTree = "<group>"; };
+		F658DC731D1192C600B6723D /* MatrixStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MatrixStack.h; sourceTree = "<group>"; };
+		F658DC741D1192C600B6723D /* mglMatrix.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mglMatrix.cpp; sourceTree = "<group>"; };
+		F658DC751D1192C600B6723D /* mglMatrix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mglMatrix.h; sourceTree = "<group>"; };
+		F658DC761D1192C600B6723D /* Vector3.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vector3.cpp; sourceTree = "<group>"; };
+		F658DC771D1192C600B6723D /* Vector3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vector3.h; sourceTree = "<group>"; };
 		F6A0C6601D0C10BA00255599 /* shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = shader.cpp; path = shader/shader.cpp; sourceTree = "<group>"; };
 		F6A0C6611D0C10BA00255599 /* shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shader.h; path = shader/shader.h; sourceTree = "<group>"; };
 		F6C19FDB1D105A7300380606 /* Texture2D.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Texture2D.h; sourceTree = "<group>"; };
@@ -184,6 +200,7 @@
 		298D57711B7448DB00932F06 /* gl02 */ = {
 			isa = PBXGroup;
 			children = (
+				F658DC6D1D1192C600B6723D /* matrix_transform */,
 				29EA9A571D0E562F001FC796 /* primitive */,
 				F6C19FDA1D105A7300380606 /* texture */,
 				29EA9A551D0E50E1001FC796 /* other */,
@@ -251,6 +268,23 @@
 				29EA9A5A1D0E592F001FC796 /* DrawPrimitives.h */,
 			);
 			name = primitive;
+			sourceTree = "<group>";
+		};
+		F658DC6D1D1192C600B6723D /* matrix_transform */ = {
+			isa = PBXGroup;
+			children = (
+				F658DC6E1D1192C600B6723D /* Matrix.cpp */,
+				F658DC6F1D1192C600B6723D /* Matrix.h */,
+				F658DC701D1192C600B6723D /* matrix_transform.cpp */,
+				F658DC711D1192C600B6723D /* matrix_transform.h */,
+				F658DC721D1192C600B6723D /* MatrixStack.cpp */,
+				F658DC731D1192C600B6723D /* MatrixStack.h */,
+				F658DC741D1192C600B6723D /* mglMatrix.cpp */,
+				F658DC751D1192C600B6723D /* mglMatrix.h */,
+				F658DC761D1192C600B6723D /* Vector3.cpp */,
+				F658DC771D1192C600B6723D /* Vector3.h */,
+			);
+			path = matrix_transform;
 			sourceTree = "<group>";
 		};
 		F6A0C65E1D0C0FB900255599 /* framework */ = {
@@ -339,9 +373,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F658DC6C1D11925D00B6723D /* Texture2D.mm in Sources */,
 				298D577B1B7492D500932F06 /* world window and screen view.cpp in Sources */,
 				29936BBD1B819499005A4FD5 /* tinyxml.cpp in Sources */,
 				29A65CE21B78A0DD00B8CD0D /* LDeviceContext.cpp in Sources */,
+				F658DC781D11942600B6723D /* Matrix.cpp in Sources */,
+				F658DC7A1D11942600B6723D /* matrix_transform.cpp in Sources */,
+				F658DC7C1D11942600B6723D /* MatrixStack.cpp in Sources */,
+				F658DC7E1D11942600B6723D /* mglMatrix.cpp in Sources */,
+				F658DC801D11942600B6723D /* Vector3.cpp in Sources */,
 				296FAAE51B82CE0500B7D0C2 /* LMesh.cpp in Sources */,
 				296A1C8D1B7C41B200DBDD1D /* drawitem.cpp in Sources */,
 				29EA9A5B1D0E592F001FC796 /* DrawPrimitives.mm in Sources */,
