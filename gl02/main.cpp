@@ -21,8 +21,10 @@ void display(){
 //    drawRectangle(Point2f(-0.5, -0.5), Point2f(0.5, 0.5));
 
 //    drawCube();
+    //进行裁剪
+    //glScissor(600, 400, 640, 480);
     testShader();
-    glFlush();
+    glSwapAPPLE();
 }
 
 void mouse(int button, int state, int x, int y){
@@ -50,16 +52,18 @@ void keyboard(unsigned char keyValue, int x, int y){
 int main(int argc, const char * argv[]) {
     // insert code here...
     glutInit(&argc, (char **)argv);
-    glutInitDisplayMode (GLUT_SINGLE | GLUT_RGBA | GLUT_DEPTH);
+    glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
     glutInitWindowSize (640, 480);
     glutInitWindowPosition (1000, 100);
     glutCreateWindow ("graphics with opengl");
     glutDisplayFunc(display);
     glutKeyboardFunc(keyboard);
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_SCISSOR_TEST);
+    glEnable(GL_BLEND);
 //    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glEnable(GL_TEXTURE_2D);//开启纹理
-    createShaderProgram();
+//    createShaderProgram();
     glutMainLoop();
     
     return 0;

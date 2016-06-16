@@ -14,8 +14,9 @@
 
 class Texture2D{
 public:
-    static Texture2D* create(const char *filename);
+    static Texture2D* create(const char *filename, int texIndex = 0);
     void useTexture();
+    void useTexture(int index);
 private:
     GLuint m_tex;
 };

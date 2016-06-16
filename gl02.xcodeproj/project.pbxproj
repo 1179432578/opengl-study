@@ -26,6 +26,7 @@
 		29A65CDF1B789B3100B8CD0D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29A65CDD1B789B3100B8CD0D /* OpenGL.framework */; };
 		29A65CE21B78A0DD00B8CD0D /* LDeviceContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29A65CE01B78A0DD00B8CD0D /* LDeviceContext.cpp */; };
 		29EA9A5B1D0E592F001FC796 /* DrawPrimitives.mm in Sources */ = {isa = PBXBuildFile; fileRef = 29EA9A591D0E592F001FC796 /* DrawPrimitives.mm */; };
+		29F4C1621D1284C2005D09F6 /* resource in CopyFiles */ = {isa = PBXBuildFile; fileRef = F6C19FE61D106A9C00380606 /* resource */; };
 		F658DC6C1D11925D00B6723D /* Texture2D.mm in Sources */ = {isa = PBXBuildFile; fileRef = F6C19FDC1D105A7300380606 /* Texture2D.mm */; };
 		F658DC781D11942600B6723D /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F658DC6E1D1192C600B6723D /* Matrix.cpp */; };
 		F658DC7A1D11942600B6723D /* matrix_transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F658DC701D1192C600B6723D /* matrix_transform.cpp */; };
@@ -43,8 +44,9 @@
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
 			dstPath = "";
-			dstSubfolderSpec = 0;
+			dstSubfolderSpec = 16;
 			files = (
+				29F4C1621D1284C2005D09F6 /* resource in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,7 +10,7 @@
 #import <Cocoa/Cocoa.h>
 #include <string.h>
 
-Texture2D* Texture2D::create(const char *filename){
+Texture2D* Texture2D::create(const char *filename, int texIndex){
     Texture2D *ret = new Texture2D;
     
     //生成纹理
@@ -27,7 +27,7 @@ Texture2D* Texture2D::create(const char *filename){
     //生成纹理
     GLuint tex;
     glGenTextures(1, &tex);
-    glActiveTexture(GL_TEXTURE0);
+    glActiveTexture(GL_TEXTURE0 + texIndex);
     glBindTexture(GL_TEXTURE_2D, tex);
     
     //glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
@@ -39,7 +39,7 @@ Texture2D* Texture2D::create(const char *filename){
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE );
     
     //设置纹理数据
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, height, width, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
     
     //释放图片像素数据， 纹理已经保存在显存中，渲染时gpu直接对纹理操作，图片数据不再需要保存在内存中了
     free((void*)data);
@@ -50,5 +50,10 @@ Texture2D* Texture2D::create(const char *filename){
 
 void Texture2D::useTexture(){
     glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, m_tex);
+}
+
+void Texture2D::useTexture(int index){
+    glActiveTexture(GL_TEXTURE0 + index);
     glBindTexture(GL_TEXTURE_2D, m_tex);
 }

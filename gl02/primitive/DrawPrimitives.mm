@@ -61,12 +61,18 @@ void main(){\n\
 }\n\
 "
 
+//纹理默认绑定到了0号单元
 #define F_GARY \
 "\
-varying vec2 v_texCoord;\
-uniform sampler2D u_tex;\
-void main(){\
-    gl_FragColor = texture2D(u_tex, v_texCoord) * vec4(0.3, 0.3, 0.3, 1.0);\
+varying vec2 v_texCoord;\n\
+uniform sampler2D u_tex;\n\
+void main(){\n\
+vec4 color = texture2D(u_tex, v_texCoord);\
+if(color.a <= 0.0){\n\
+    discard;\n\
+}\n\
+color.rgb = color.rgb + vec3(0, -color.g, -color.b);\
+gl_FragColor = color;\n\
 }\
 "
 
@@ -98,6 +104,42 @@ uniform sampler2D u_tex;                  \n\
 void main()								\n\
 {										\n\
 gl_FragColor = v_fragmentColor * texture2D(u_tex, v_texCoord);         \n\
+}										\n\
+"
+
+
+//多重纹理顶点着色器
+#define V_DTEXTURE \
+"													\n\
+attribute vec4 a_position;							\n\
+attribute vec2 a_texCoord;                          \n\
+varying vec2 v_texCoord;    \n\
+varying vec4 v_fragmentColor;						\n\
+void main()											\n\
+{													\n\
+gl_Position =  a_position;              \n\
+v_texCoord = a_texCoord;                            \n\
+}													\n\
+"
+
+//多重纹理片元着色器
+#define  F_DTEXTURE \
+"										\n\
+varying vec2 v_texCoord; \
+uniform sampler2D u_tex1;                  \n\
+uniform sampler2D u_tex2;           \n\
+\n\
+void main()								\n\
+{										\n\
+    vec4 color1 = texture2D(u_tex1, v_texCoord); \n\
+    vec4 color2 = texture2D(u_tex2, v_texCoord); \n\
+    if(color2.a > 0.0){\n\
+        gl_FragColor = color1 * 0.5 + color2 * 0.5;\n\
+        gl_FragColor.a = color1.a;\n\
+    }\n\
+    else{\n\
+        gl_FragColor = color1;\n\
+    }\n\
 }										\n\
 "
 
@@ -158,7 +200,20 @@ static void initDraw3(){
     if(!s_bInitialized ) {
         s_program = createShaderProgram(V_GARY, F_GARY);
         
-//        s_nColorLocation = glGetUniformLocation(s_program, "u_tex");
+        GLint texLocation = glGetUniformLocation(s_program, "u_tex");
+        glUniform1i(texLocation, 0);
+        
+        glBindAttribLocation(s_program, 0, "a_position");
+        glBindAttribLocation(s_program, 1, "a_texCoord");
+        
+        s_bInitialized = true;
+    }
+}
+
+//用于双纹理着色
+static void initDraw4(){
+    if(!s_bInitialized ) {
+        s_program = createShaderProgram(V_DTEXTURE, F_DTEXTURE);
         
         glBindAttribLocation(s_program, 0, "a_position");
         glBindAttribLocation(s_program, 1, "a_texCoord");
@@ -402,7 +457,7 @@ void drawCube(){
         -0.5,-0.5,0.5
     };
     
-    Texture2D *tex = Texture2D::create("/Users/lewis/Desktop/opengl-study/resource/Icon-72@2x.png");
+    Texture2D *tex = Texture2D::create("resource/Icon-72@2x.png");
     
     //纹理坐标
     GLfloat texCoord[] = {
@@ -480,20 +535,51 @@ void drawQuads2(GLfloat p[], GLfloat texCoord[], int numberOfPoints, Texture2D *
     
 }
 
+//画四边形
+void drawQuads3(GLfloat p[], GLfloat texCoord[], int numberOfPoints, Texture2D *tex1, Texture2D *tex2){
+    initDraw4();
+    glUseProgram(s_program);
+    
+    //激活绑定纹理
+    tex1->useTexture(1);
+    tex2->useTexture(2);
+    
+    /*传数据给opengl服务器*/
+    glEnableVertexAttribArray(0);/*position*/
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, p);
+    
+    glEnableVertexAttribArray(1);//texture coordinate
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, texCoord);
+    
+    glDrawArrays(GL_QUADS, 0, numberOfPoints);
+    
+}
+
 void testShader(){
     GLfloat vPos[] = {
-            0, 0,
-            1, 0,
+            -1, -1,
+            1, -1,
             1, 1,
-            0, 1};
+            -1, 1};
     
     GLfloat texPos[] = {
-        0, 0,
-        1, 0,
+        0, 1,
         1, 1,
-        0, 1};
+        1, 0,
+        0, 0};
     
-    Texture2D *tex = Texture2D::create("/Users/lewis/Desktop/opengl-study/resource/Icon-72@2x.png");
+    Texture2D *tex1 = Texture2D::create("resource/1.png", 1);
+    Texture2D *tex2 = Texture2D::create("resource/4.png", 2);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
-    drawQuads2(vPos, texPos, 4, tex);
+    
+    tex1->useTexture(1);
+    GLint tex1Location = glGetUniformLocation(s_program, "u_tex1");
+    glUniform1i(tex1Location, 1);//绑到纹理单元0
+    
+    tex2->useTexture(2);
+    GLint tex2Location = glGetUniformLocation(s_program, "u_tex2");
+    glUniform1i(tex2Location, 2);//绑定到纹理单元1
+
+    drawQuads3(vPos, texPos, 4, tex1, tex2);
 }
