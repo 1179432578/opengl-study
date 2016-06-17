@@ -38,7 +38,8 @@ void drawTriangles(Point2f p[], int numberOfPoints);
 void drawFourcone();
 
 //画正方体
-void drawCube();
+//void drawCube();
+void drawCube(float dx, float dy, float dz, float delta);
 
 //改变变换矩阵
 void changeMatrix();

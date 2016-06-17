@@ -182,13 +182,15 @@ static void initDraw()
 static void initDraw2()
 {
     if(!s_bInitialized ) {
-        s_program = createShaderProgram(V_TEXTURE, F_TEXTURE);
-        
-        s_nColorLocation = glGetUniformLocation(s_program, "u_color");
-        s_mvcMatrixLocation = glGetUniformLocation(s_program, "MVPMatrix");
-        
-        glBindAttribLocation(s_program, 0, "a_position");
-        glBindAttribLocation(s_program, 1, "a_texCoord");
+//        s_program = createShaderProgram(V_TEXTURE, F_TEXTURE);
+//
+//        s_nColorLocation = glGetUniformLocation(s_program, "u_color");
+//        s_mvcMatrixLocation = glGetUniformLocation(s_program, "MVPMatrix");
+//        
+//        glBindAttribLocation(s_program, 0, "a_position");
+//        glBindAttribLocation(s_program, 1, "a_texCoord");
+        s_program = loadShaderFile("resource/V_TEXTURE.vp", "resource/F_TEXTURE.fp", 2, "a_position", 0, "a_texCoord", 1,
+                       2, "u_color", &s_nColorLocation, "MVPMatrix", &s_mvcMatrixLocation);
         
         s_bInitialized = true;
     }
@@ -422,7 +424,26 @@ void drawQuads(GLfloat p[], GLfloat texCoord[], int numberOfPoints, Texture2D *t
     
 }
 
-void drawCube(){
+void changeMatrix(float dx, float dy, float dz, float delta){
+    //模型变换
+    Matrix44 m1 = rotate(delta, 1, 1, -1);
+    Matrix44 mt = translate(dx, dy, dz);
+    
+    //观察变换
+    Matrix44 m2 = mglLookAt(0, 0, 3, 0, 0, 0, 0, 1, 0);
+    //设置投影空间
+    Matrix44 m3 = mgluPerspective(M_PI_4, 640.0f/480.f, 1, 1000);
+    
+    //求矩阵乘积
+    Matrix44 m4 = multiply(&m1, &mt);
+    m4 = multiply(&m4, &m2);
+    m4 = multiply(&m4, &m3);
+//    print(&m3);
+    //设置着色器关联变量值
+    memcpy(s_matrix, &m4, 64);
+}
+
+void drawCube(float dx, float dy, float dz, float delta){
     //顶点坐标
     GLfloat vertexPos[] = {
         //前面
@@ -494,7 +515,7 @@ void drawCube(){
     };
     
     //对模型进行变换
-    changeMatrix();
+    changeMatrix(dx, dy, dz, delta);
     
     drawQuads(vertexPos, texCoord, sizeof(vertexPos)/sizeof(GLfloat)/3, tex);
 }
@@ -514,6 +535,8 @@ void changeMatrix(){
     //设置着色器关联变量值
     memcpy(s_matrix, &m4, 64);
 }
+
+
 
 //画四边形
 void drawQuads2(GLfloat p[], GLfloat texCoord[], int numberOfPoints, Texture2D *tex){

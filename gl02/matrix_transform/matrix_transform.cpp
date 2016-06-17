@@ -9,9 +9,9 @@
 #include "matrix_transform.h"
 
 Matrix44 translate(float dx,float dy, float dz){
-    Matrix44 ret = {0, 0, 0, 0,
-        0, 0, 0, 0,
-        0, 0, 0, 0,
+    Matrix44 ret = {1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
         dx, dy, dz, 1};
     
     return ret;

@@ -73,5 +73,6 @@ gl_FragColor = v_fragmentColor;                     \n\
 }													\n\
 "
 
+GLuint loadShaderFile(const char *vSourceFilename, const char *fSourceFilename, ...);
 
 #endif /* shader_hpp */

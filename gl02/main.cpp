@@ -6,10 +6,9 @@
 //  Copyright (c) 2015年 鲁飞. All rights reserved.
 //
 
-
-#include "LCommon.h"
 #include "shader.h"
 #include "DrawPrimitives.h"
+#include <stdlib.h>
 
 void display(){
     glClearColor(0, 0, 0, 0);
@@ -20,10 +19,21 @@ void display(){
 //    drawLine(0.0f, 0.0f, 0.5f, 0.5f);
 //    drawRectangle(Point2f(-0.5, -0.5), Point2f(0.5, 0.5));
 
-//    drawCube();
+    drawCube(0, 0, 0, 0.5);
     //进行裁剪
     //glScissor(600, 400, 640, 480);
-    testShader();
+//    testShader();
+    glSwapAPPLE();
+}
+
+static float dx = 0;
+static float dy = 0;
+static float dz = 0;
+static float delta = 0.5;
+void draw(){
+    glClearColor(0, 0, 0, 0);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    drawCube(dx, dy, dz, delta);
     glSwapAPPLE();
 }
 
@@ -42,7 +52,34 @@ void keyboard(unsigned char keyValue, int x, int y){
             printf("EXIT");
             exit(-1);
             break;
-            
+        case 'w':
+            dy += 0.1f;
+            draw();
+            break;
+        case 's':
+            dy -= 0.1f;
+            draw();
+            break;
+        case 'a':
+            dx -= 0.1f;
+            draw();
+            break;
+        case 'd':
+            dx += 0.1f;
+            draw();
+            break;
+        case '+':
+            dz += 0.1f;
+            draw();
+            break;
+        case '-':
+            dz -= 0.1f;
+            draw();
+            break;
+        case ' ':
+            delta += 0.1f;
+            draw();
+            break;
         default:
             break;
     }
