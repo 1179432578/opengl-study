@@ -127,6 +127,12 @@ GLuint loadShaderFile(const char *vSourceFilename, const char *fSourceFilename, 
     
     va_end(ap);
     
-    return program;
+    /*link*/
+    glLinkProgram(program);
+    glDeleteShader(vshader);
+    glDeleteShader(fshader);
+    checkGLError();
 
+    
+    return program;
 }

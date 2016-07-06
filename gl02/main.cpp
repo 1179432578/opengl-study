@@ -10,13 +10,15 @@
 #include "DrawPrimitives.h"
 #include <stdlib.h>
 
+#include "tourial1.h"
 static GLuint PBO;
 static unsigned char pixels[640*480*4];
 void display(){
     glClearColor(0, 0, 0, 0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    drawCube(0, 0, 0, 0.5);
+    drawQuad();
+//    drawCube(0, 0, 0, 0.5);
 //    glDrawPixels(400, 400, GL_RGBA, GL_UNSIGNED_BYTE, pixels);//从PBO读像素
     glFlush();
     
@@ -119,26 +121,26 @@ int main(int argc, const char * argv[]) {
     glutCreateWindow ("graphics with opengl");
     glutDisplayFunc(display);
     glutKeyboardFunc(keyboard);
-    glEnable(GL_DEPTH_TEST);
-    glEnable(GL_SCISSOR_TEST);
-    glEnable(GL_BLEND);
+//    glEnable(GL_DEPTH_TEST);
+//    glEnable(GL_SCISSOR_TEST);
+//    glEnable(GL_BLEND);
 //    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    glEnable(GL_TEXTURE_2D);//开启纹理
+//    glEnable(GL_TEXTURE_2D);//开启纹理
     
-    glGenBuffers(1, &PBO);
-    glBindBuffer(GL_PIXEL_PACK_BUFFER, PBO);
-    glBufferData(GL_PIXEL_PACK_BUFFER, 640*480*4, NULL, GL_DYNAMIC_COPY);
-    glBindBuffer(GL_PIXEL_PACK_BUFFER, 0);
+//    glGenBuffers(1, &PBO);
+//    glBindBuffer(GL_PIXEL_PACK_BUFFER, PBO);
+//    glBufferData(GL_PIXEL_PACK_BUFFER, 640*480*4, NULL, GL_DYNAMIC_COPY);
+//    glBindBuffer(GL_PIXEL_PACK_BUFFER, 0);
     
-    for (int i=0; i<480; i++) {
-        for (int j=0; j<640; j++) {
-            int index = (i*640+j)*4;
-            pixels[index+0] = 255;
-            pixels[index+1] = 0;
-            pixels[index+2] = 255;
-            pixels[index+3] = 255;
-        }
-    }
+//    for (int i=0; i<480; i++) {
+//        for (int j=0; j<640; j++) {
+//            int index = (i*640+j)*4;
+//            pixels[index+0] = 255;
+//            pixels[index+1] = 0;
+//            pixels[index+2] = 255;
+//            pixels[index+3] = 255;
+//        }
+//    }
     
     glutMainLoop();
     

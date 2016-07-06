@@ -11,12 +11,7 @@
 
 GLuint program;
 
-void checkGLError(){
-    GLenum __error = glGetError();
-    if(__error) {
-        printf("OpenGL error 0x%04X in %s %s %d\n", __error, __FILE__, __FUNCTION__, __LINE__); \
-    }
-}
+
 
 /*创建着色程序*/
 GLuint createShaderProgram(){
